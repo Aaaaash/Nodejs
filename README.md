@@ -27,4 +27,5 @@ nodeJS中每个js文件被看做一个模块，每个js文件都可能存在对�
 * 文件模块  var util=require('../util.js')
 * 第三方模块 var promise=require('bluebird')
 `nodeJS中可以通过路径来引用模块，也可以使用文件名来引用`
+
 >例子详见demo-02-module文件夹
