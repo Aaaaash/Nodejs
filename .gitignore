@@ -1,0 +1,4 @@
+/demo-04-crawler/*
+!/demo-04-crawler/imooc-crawler.js
+!/demo-04-crawler/package.json
+!/demo-04-crawler/crawler.js
