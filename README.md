@@ -92,3 +92,46 @@ Url {<br/>
 'http://nodejs.cn/doc/node/url.html'
 
 传入两个参数，合并为一个合法的url地址
+
+##QueryString
+###序列化
+把一个url参数对象序列化为一个参数字符串<br/>
+第一个参数为一个url参数对象<br/>
+>querystring.stringify({name:'sakura',course:['jade','node'],from:''})<br/>
+'name=sakura&course=jade&course=node&from='
+
+第二个参数为参数对象序列化后的连接符<br/>
+>querystring.stringify({name:'sakura',course:['jade','node'],from:''},'^')<br/>
+'name=sakura^course=jade^course=node^from='
+
+第三个参数为key与value之间的连接符（默认=）<br/>
+>querystring.stringify({name:'sakura',course:['jade','node'],from:''},'^',':')<br/>
+'name:sakura^course:jade^course:node^from:'
+
+###反序列化
+第一个参数为一个序列化后的url参数字符串<br/>
+>querystring.parse('name=sakura&course=jade&course=node&from=')<br/>
+{ name: 'sakura', course: [ 'jade', 'node' ], from: '' }
+
+第二个参数当url参数字符串连接符不是默认的=号时需要指出<br/>
+>querystring.parse('name=sakura^course=jade^course=node^from=','^')<br/>
+{ name: 'sakura', course: [ 'jade', 'node' ], from: '' }
+这里参数字符串的连接符为^，第二个参数将^符号传入才能正确解析
+
+第三个参数是当key和value的连接符不是默认的=号时需要指定的符号<br/>
+>querystring.parse('name:sakura^course:jade^course:node^from:','^',':')<br/>
+{ name: 'sakura', course: [ 'jade', 'node' ], from: '' }
+这里参数字符串中键值对的连接符为：，参数连接符为^,所以需要传入第二个和第三个参数分别指定参数连接符与键值对连接符
+
+第四个参数指定参数最大个数<br/>
+
+###转义
+>querystring.escape('<哈哈哈>')<br/>
+'%3C%E5%93%88%E5%93%88%E5%93%88%3E'<br/>
+escape方法可以将中文转义为乱码
+
+> querystring.unescape('%3C%E5%93%88%E5%93%88%E5%93%88%3E')<br/>
+'<哈哈哈>'<br/>
+unescape方法可以将乱码转义为中文
+
+##HTTP相关
