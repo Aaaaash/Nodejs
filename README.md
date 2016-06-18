@@ -135,3 +135,21 @@ escape方法可以将中文转义为乱码
 unescape方法可以将乱码转义为中文
 
 ##HTTP相关
+>HTTP就是一种协议
+
+-->http客户端发起请求，创建端口<br/>
+-->http服务器在端口监听客户端请求<br/>
+-->http服务器向客户端返回状态和内容<br/>
+
+###访问一个网站所要经历的过程
+>1.输入网址后，浏览器搜索自身的DNS缓存<br/>
+2.搜索操作系统自身的DNS缓存（如果浏览器没有找到的话）<br/>
+3.读取本地的host文件<br/>
+4.浏览器发起一个dns的系统调用<br/>
+5.浏览器获得域名对应的IP地址后，发起HTTP三次握手<br/>
+####http三次握手
+>>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；<br/>
+第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；<br/>
+第三次握手：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。<br/>
+
+>6.TCP/IP链接建立起来后，浏览器就可以向服务器发送http请求了
