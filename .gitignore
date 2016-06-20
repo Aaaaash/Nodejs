@@ -3,3 +3,7 @@
 !/demo-04-crawler/package.json
 !/demo-04-crawler/crawler.js
 !/demo-04-crawler/tieba-crawler.js
+/demo-08-reviewCrawler/*
+!/demo-08-reviewCrawler/https.js
+!/demo-08-reviewCrawler/promise_crawler.js
+!/demo-08-reviewCrawler/package.json
